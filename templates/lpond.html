@@ -1,0 +1,66 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='lpond.css') }}">
+<title>Counterpoint Checker</title>
+<h1>Autograder - Composition - Counterpoint Checker</h1>
+
+<table>
+	<tr>
+        <td>
+		    <form method="POST">
+			<table>
+				<tr>
+					<th>Line</th>
+					<th>Clef</th>
+					<th>Key</th>
+					<th>Major/Minor</th>
+					<th>Notes</th>
+                </tr> 
+                
+                {% for line, acro in [['Cantus Firmus', 'cf'], ['Counterpoint', 'cp']] %}
+				<tr>
+					<td>{{ line }}</td>
+					<td>
+						<select name="{{ acro }}clef"> 
+                        {% for clef in 'treble alto bass'.split() %}
+                            <option value="{{ clef }}">{{ clef.title() }}</option> 
+                        {% endfor %} </select>
+					</td>
+					<td>
+						<select name="{{ acro }}key"> 
+                        {% for key in 'A, A#, Bb, B, C, C#, Db, D, D#, Eb, E, F, F#, Gb, G, G#'.split(', ') %}
+                            <option value="{{ key }}">{{ key }}</option> 
+                        {% endfor %} </select>
+					</td>
+					<td>
+						<select name="{{ acro }}minor"> 
+                        {% for key in 'major minor'.split() %}
+                            <option value="{{ key }}">{{ key.title() }}</option> 
+                        {% endfor %} </select>
+					</td>
+					<td>
+						<input name="{{ acro }}notes">
+					</td>
+                </tr> 
+                {% endfor %} 
+            </table>
+			<br>
+            <input type="submit" value="Show Sheet Music"> 
+            </form>
+        </td>
+        
+        <td>
+            <label>FINAL SCORE GOES HERE</label>
+        </td>
+	</tr>
+
+    <tr> 
+        <td>
+        {% if post %}
+            <img src="{{ url_for('static', filename='test.png' ) }}"> 
+        {% endif %}
+        </td>
+
+        <td>
+            <label>TABLE OF RESULTS GOES HERE</label>
+        </td>
+    </tr>
+</table>

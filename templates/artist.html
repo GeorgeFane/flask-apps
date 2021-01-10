@@ -1,0 +1,14 @@
+<title>Lyric Frequency</title>
+<h1>Lyric Frequency</h1>
+<h3>This app shows the lyric frequency for selected artists</h3>
+<h3>Input an Artist Name and press Enter</h3>
+
+<form method="POST">
+    <label>Artist Name: </label>
+    <input name="name">
+    <input type="submit" value="Enter"/>
+</form>
+
+{% if post %}
+    <h3>{{ inp }} doesn't exist or hasn't been scraped yet</h3>
+{% endif %}

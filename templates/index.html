@@ -1,0 +1,9 @@
+<title>George Fane</title>
+<h1>Home</h1>
+<h3>Apps</h3>
+
+{% for label, route in apps.items() %}
+    <form action="/{{ route }}/">
+        <input type="submit" value="{{ label }}"/>
+    </form>
+{% endfor %}

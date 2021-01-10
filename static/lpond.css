@@ -1,0 +1,35 @@
+h1 {
+    background: silver;
+    color: navy;
+    border: 2px solid navy;
+    width: 100%;
+}
+
+h6 {
+    background: navy;
+    color: yellow;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    padding: 9px;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+input[type=submit] {
+    background: rgb(0, 199, 0);
+    color: white;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+pre {
+    background: silver;
+    color: navy;
+}

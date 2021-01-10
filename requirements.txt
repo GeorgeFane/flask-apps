@@ -1,0 +1,7 @@
+flask
+pandas
+google-cloud-datastore
+web3==4.9.1
+datetime
+pytz
+mingus
