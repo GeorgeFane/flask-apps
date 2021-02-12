@@ -7,7 +7,7 @@ from web3 import Web3, HTTPProvider
 import datetime, pytz
 
 #sets up web3
-url = 'https://sandbox.truffleteams.com/8f7572d1-e253-420a-93bc-2ed8a6f051e6'
+url = 'https://sandbox.truffleteams.com/' + 'API_KEY'
 web3 = Web3(HTTPProvider(url))
 
 acc = web3.eth.accounts
@@ -16,10 +16,13 @@ user, charity, store = acc[:3]
 headers = ['TimestampEST', 'From', 'To', 'Continent', 'Value', 'Memo', 'TxnHash']
 continents = ['Asia', 'Africa', 'North America', 'South America', 'Antarctica', 'Europe', 'Australia']
 
-address, abi = '0x34b41A8f1b89e94F9E50283DD9F3a296C620E2fA', '[ { "anonymous": false, "inputs": [ { "indexed": false, "internalType": "bytes", "name": "TimestampEST", "type": "bytes" }, { "indexed": false, "internalType": "address", "name": "From", "type": "address" }, { "indexed": false, "internalType": "address", "name": "To", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "Continent", "type": "uint256" }, { "indexed": false, "internalType": "uint256", "name": "Value", "type": "uint256" }, { "indexed": false, "internalType": "bytes", "name": "Memo", "type": "bytes" }, { "indexed": false, "internalType": "bytes", "name": "TxnHash", "type": "bytes" } ], "name": "trans", "type": "event" }, { "stateMutability": "payable", "type": "fallback" }, { "inputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "name": "bals", "outputs": [ { "internalType": "uint256", "name": "", "type": "uint256" } ], "stateMutability": "view", "type": "function" }, { "inputs": [ { "internalType": "string", "name": "time", "type": "string" }, { "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "cont", "type": "uint256" }, { "internalType": "uint256", "name": "value", "type": "uint256" }, { "internalType": "string", "name": "memo", "type": "string" }, { "internalType": "string", "name": "hash", "type": "string" } ], "name": "give", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "internalType": "string", "name": "time", "type": "string" }, { "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "cont", "type": "uint256" }, { "internalType": "uint256", "name": "value", "type": "uint256" }, { "internalType": "string", "name": "memo", "type": "string" }, { "internalType": "string", "name": "hash", "type": "string" } ], "name": "take", "outputs": [ { "internalType": "bool", "name": "", "type": "bool" } ], "stateMutability": "nonpayable", "type": "function" } ]'
+with open('data/address.txt') as f:
+    address = f.read()
+with open('data/abi.json') as f:
+    abi = json.load(f)
 
-c = web3.eth.contract(abi=abi, address=address)
-filt = c.eventFilter('trans', {'fromBlock': 0,'toBlock': 'latest'})
+c = web3.eth.contract(address=address, abi=abi)
+filt = c.events.trans.createFilter(fromBlock=0)
 
 #FUNCTIONS FOR FRONTEND
 tz = pytz.timezone('America/Detroit')
