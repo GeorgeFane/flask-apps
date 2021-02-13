@@ -1,5 +1,6 @@
 body {
     background-color:lightgrey;
+    width: 90%;
 }
 
 h1 {
@@ -39,4 +40,10 @@ input[type=submit] {
 
 .column {
   flex: 50%;
+}
+
+table, td {
+    background-color: white;
+    border-collapse: collapse;
+    padding: 9px;
 }

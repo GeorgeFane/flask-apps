@@ -1,4 +1,4 @@
-from flask import *
+from flask import Flask, render_template
 app = Flask(__name__)
 
 names = [
@@ -7,6 +7,7 @@ names = [
     'CryptoCharity',
     'Payoff Matrix Solver',
     'RatingsMap',
+    'Chant Platform',
 ]
 
 routes = [
@@ -14,26 +15,30 @@ routes = [
     'dstore',
     'crypchar',
     'gpm',
-    'heatmap'
+    'ratingsmap',
+    'chant',
 ]
 
-from artist import artist
+from artist.main import artist
 app.register_blueprint(artist, url_prefix='/artist')
 
-from dstore import dstore
+from dstore.main import dstore
 app.register_blueprint(dstore, url_prefix='/dstore')
 
-from crypchar import crypchar
+from crypchar.main import crypchar
 app.register_blueprint(crypchar, url_prefix='/crypchar')
 
-from gpm import gpm
+from gpm.main import gpm
 app.register_blueprint(gpm, url_prefix='/gpm')
 
-from heatmap import heatmap
-app.register_blueprint(heatmap, url_prefix='/heatmap')
+from ratingsmap.main import ratingsmap
+app.register_blueprint(ratingsmap, url_prefix='/ratingsmap')
+
+from chant.main import chant
+app.register_blueprint(chant, url_prefix='/chant')
 
 @app.route('/')
-def hello_world():
+def index():
     return render_template(
         'main.html',
         apps=list(zip(names, routes))
