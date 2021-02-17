@@ -1,0 +1,52 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='paypal.css') }}">
+<title>WatchList</title>
+
+<form action="/watchlist/">
+    <input type="image" src="{{ url_for('static',filename='home/watchlist.png') }}" 
+    width="9%" style="float:left">
+</form>
+<h1>WatchList</h1>
+
+<div class="row">
+    <div class="column">    
+        <h3>Search for a show</h3>
+        <form method="POST">
+            <input type="text" name="search">
+            <input type="submit">
+        </form>
+    </div>
+    
+    <div class="column">
+        <pre>
+You know when you walk upstairs and forget what you came for?
+Well, it sucks even more when you're laying in bed on your phone,
+and you're reminded of a new movie or maybe one you saw before.
+"Hey", you think, "That'd be a nice watch." Then you go to sleep.
+IT'S GONE
+        </pre>
+    </div>    
+</div>
+
+<div class="row">
+    <div class="column">    
+        <h3>Favorites</h3>
+
+        {% for name, value in favs.items() %}
+        <div>
+
+            <form action="/{{ name }}/">
+                <input type="image" src="{{ value['Poster'] }}" 
+                width="9%" style="float:left">
+            </form>
+
+            {{ name }}
+
+        </div><br>
+        {% endfor %}
+
+    </div>
+    
+    <div class="column">
+        <h3>WatchList</h3>
+    </div>    
+</div>

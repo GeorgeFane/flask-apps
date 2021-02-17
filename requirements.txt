@@ -21,6 +21,7 @@ google-auth==1.26.1
 google-cloud-core==1.6.0
 google-cloud-datastore==2.1.0
 googleapis-common-protos==1.52.0
+grpc-google-iam-v1==0.12.3
 grpcio==1.35.0
 hexbytes==0.2.1
 idna==2.10

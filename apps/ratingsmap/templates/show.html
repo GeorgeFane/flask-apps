@@ -1,0 +1,20 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='paypal.css') }}">
+<title>RatingsMap</title>
+
+<form action="/ratingsmap/">
+    <input type="image" src="{{ url_for('static',filename='home/ratingsmap.png') }}" 
+    width="9%" style="float:left">
+</form>
+<h1>RatingsMap</h1>
+
+{{ error }}<br>
+
+<div class="row">
+    <div>    
+        <img src="{{ poster }}">
+    </div>    
+
+    {% for table in tables %}
+        {{ table|safe }}
+    {% endfor %}
+</div>

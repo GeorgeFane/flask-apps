@@ -35,11 +35,12 @@ input[type=submit] {
 }
 
 .row {
-  display: flex;
+    display: flex;
+    margin-left: 11%;
 }
 
 .column {
-  flex: 50%;
+    flex: 50%;
 }
 
 table, td {

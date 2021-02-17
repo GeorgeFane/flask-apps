@@ -2,9 +2,8 @@
 
 <title>George Fane</title>
 <h1>Home</h1>
-<h3>Apps</h3>
 
-<div style="display: flex; flex-wrap: wrap;">
+<div style="display: flex; flex-wrap: wrap; width: 100%">
 {% for name, route in apps %}
     <form action="/{{ route }}">
         {{ name }}<br>
