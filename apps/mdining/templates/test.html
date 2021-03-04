@@ -1,0 +1,22 @@
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='paypal.css') }}">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js" type="text/javascript">
+</script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('table').DataTable({
+        "pageLength": 9
+    });
+});
+</script>
+
+
+<body>
+    <title>M|Dining Scraper</title>
+    <h1>M|Dining Scraper</h1>
+    {{ table|safe }}
+</body>

@@ -1,31 +1,29 @@
 from flask import *
-import os
 import pandas as pd
-from google.cloud import datastore
 from secrets import *
 
 dstore = Blueprint('dstore', __name__, template_folder='templates')
-
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'datastore.json'
-client = datastore.Client()
 
 @dstore.route('/', methods=['GET', 'POST'])
 def indexpost():
     post = request.method == 'POST'
     if post:
-        query = client.query(kind=request.form['kind']) 
+        data = request.form
+        table = db.collection(data['kind'])
 
-        prop = request.form['property']
-        op = request.form['operator']
-        value = request.form['value']
+        prop = data['property']
+        op = data['operator']
+        value = data['value']
 
         if prop and op and value:   
-            if request.form.get('int'):
+            if data.get('int'):
                 value = int(value)
-            query.add_filter(prop, op, value)
+                
+            table = table.where(prop, op, value)
 
-        fetched = list(query.fetch())
-        df = pd.DataFrame(fetched)
+        df = pd.DataFrame(
+            [x.to_dict() for x in table.stream()]
+        )
 
     return render_template(
         'dstore.html', 

@@ -8,7 +8,7 @@ names = [
     'Payoff Matrix Solver',
     'RatingsMap',
     'Chant Platform',
-    'WatchList',
+    'M|Dining Scraper',
 ]
 
 routes = [
@@ -18,7 +18,7 @@ routes = [
     'gpm',
     'ratingsmap',
     'chant',
-    'watchlist',
+    'mdining',
 ]
 
 def gen():
@@ -44,8 +44,8 @@ app.register_blueprint(ratingsmap, url_prefix=next(g))
 from apps.chant.main import chant
 app.register_blueprint(chant, url_prefix=next(g))
 
-from apps.watchlist.main import watchlist
-app.register_blueprint(watchlist, url_prefix=next(g))
+from apps.mdining.main import mdining
+app.register_blueprint(mdining, url_prefix=next(g))
 
 @app.route('/')
 def index():

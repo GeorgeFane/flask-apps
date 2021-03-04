@@ -12,7 +12,6 @@ search = lambda title: requests.get(
     url,
     params=dict(
         apikey=apikey,
-        type='series',
         s=title
     )
 ).json()
@@ -21,7 +20,6 @@ getShow = lambda title: requests.get(
     url,
     params=dict(
         apikey=apikey,
-        type='series',
         t=title
     )
 ).json()
