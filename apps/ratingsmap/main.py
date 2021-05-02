@@ -1,5 +1,6 @@
 from flask import *
 from apps.ratingsmap.helper import *
+from secrets import db
 
 ratingsmap = Blueprint('ratingsmap', __name__, template_folder='templates')
 admin = False

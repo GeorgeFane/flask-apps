@@ -2,11 +2,10 @@ import requests
 import concurrent.futures
 import numpy as np
 import pandas as pd
-
-from secrets import *
+import os
 
 url = 'http://www.omdbapi.com'
-apikey = access('omdb')
+apikey = os.getenv('OMDB')
 
 search = lambda title: requests.get(
     url,

@@ -6,13 +6,9 @@ import os
 artist = Blueprint('artist', __name__, template_folder='templates')
 
 script_dir = os.path.dirname(__file__)
-with open(
-    os.path.join(script_dir, 'data/freqs.txt')
-) as f:
+with open(os.path.join(script_dir, 'data/freqs.txt')) as f:
     freqs = json.load(f)
-with open(
-    os.path.join(script_dir, 'data/correct.txt')
-) as f:
+with open(os.path.join(script_dir, 'data/correct.txt')) as f:
     correct = json.load(f)
 
 @artist.route('/', methods=['GET', 'POST'])
@@ -26,7 +22,7 @@ def index():
         else:
             return render_template('artist.html', post=post, inp=inp)
     else:
-        return render_template('artist.html', post=post)
+        return render_template('artist.html', post=post, partners=correct.values())
 
 @artist.route('/<encoded>/')
 def result(encoded):

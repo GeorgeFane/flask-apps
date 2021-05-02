@@ -1,7 +1,6 @@
 from flask import *
 import pandas as pd
 from math import floor
-from secrets import *
 import os
 
 import json
@@ -9,7 +8,8 @@ from web3 import Web3, HTTPProvider
 import datetime, pytz
 
 #sets up web3
-url = 'https://sandbox.truffleteams.com/' + access('truffle')
+TRUFFLE = os.getenv('TRUFFLE')
+url = 'https://sandbox.truffleteams.com/' + TRUFFLE
 web3 = Web3(HTTPProvider(url))
 
 acc = web3.eth.accounts

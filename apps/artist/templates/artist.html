@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='lpond.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='paypal.css') }}">
 
 <title>Lyric Frequency</title>
 <h1>Lyric Frequency</h1>
@@ -7,7 +7,12 @@
 
 <form method="POST">
     <label>Artist Name: </label>
-    <input name="name">
+    <input type="text" name="name" list="cityname">
+        <datalist id="cityname">
+            {% for partner in partners %}
+            <option value="{{ partner }}">
+            {% endfor %}
+        </datalist>
     <input type="submit" value="Enter"/>
 </form>
 

@@ -2,12 +2,12 @@ import json
 import requests
 from web3 import Web3, HTTPProvider
 from flask import *
-from secrets import *
 import os
 
 chant = Blueprint('chant', __name__, template_folder='templates')
 
-url= 'https://sandbox.truffleteams.com/' + access('truffle')
+TRUFFLE = os.getenv('TRUFFLE')
+url= 'https://sandbox.truffleteams.com/' + TRUFFLE
 w3 = Web3(HTTPProvider(url))
 w3.eth.default_account = w3.eth.accounts[0]
 

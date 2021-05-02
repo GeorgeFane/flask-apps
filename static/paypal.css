@@ -1,5 +1,5 @@
 body {
-    background-color:lightgrey;
+    background-color:white;
 }
 
 h1 {
@@ -42,8 +42,8 @@ input[type=submit] {
     flex: 50%;
 }
 
-table, td {
-    background-color: white;
+table, th, td {
     border-collapse: collapse;
     padding: 9px;
 }
+tr:nth-child(even) {background-color: #f2f2f2;}
