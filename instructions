@@ -1,0 +1,4 @@
+
+source ~/envs/hello_world/bin/activate
+cd flask-apps
+python main.py

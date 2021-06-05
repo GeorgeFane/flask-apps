@@ -78,7 +78,8 @@ def show(title):
     nstr = show.get('totalSeasons', '')
     if nstr.isdigit():
         n = int(nstr)
-        df = whole(n, title)
+        df = whole(n, show['Title'])
+
         styled = (
             df.T
         ).style.background_gradient(

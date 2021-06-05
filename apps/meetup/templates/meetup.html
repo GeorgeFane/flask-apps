@@ -1,0 +1,43 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='paypal.css') }}">
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+<title>MeetUp</title>
+
+<input type="image" src="{{ url_for('static',filename='home/meetup.png') }}" width="9%" style="float:left">
+
+<h1>MeetUp</h1>
+<h3>Find a good place to meet up</h3>
+
+<div style="display: flex;">
+    <div style="margin-left: 9%;">
+        <form method="POST">
+
+            <label>Your Address</label>
+            <input type="text" name="address" />
+            <br>
+
+            <label>How many friends?</label>
+            <input type="number" name="count" value={{ count }} />
+            <br><br>
+
+            {% for i in range(count) %}
+            <label>Friend {{ i + 1 }} Address</label>
+            <input type="text" name="addresses" />
+            <br>
+            {% endfor %}
+            <br>
+
+            <input type="submit" />
+
+        </form>
+    </div>
+
+    <div class="chart" id="bargraph" style="width:55%; margin-left: 3%;">
+        <script>
+            var graphs = {{ plot | safe }};
+            Plotly.plot('bargraph',graphs,{});
+        </script>
+    </div>
+</div>

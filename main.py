@@ -9,6 +9,7 @@ names = [
     'RatingsMap',
     'Chant Platform',
     'M|Dining Scraper',
+    'MeetUp',
 ]
 
 routes = [
@@ -19,6 +20,7 @@ routes = [
     'ratingsmap',
     'chant',
     'mdining',
+    'meetup',
 ]
 
 def gen():
@@ -46,6 +48,9 @@ app.register_blueprint(chant, url_prefix=next(g))
 
 from apps.mdining.main import mdining
 app.register_blueprint(mdining, url_prefix=next(g))
+
+from apps.meetup.main import meetup
+app.register_blueprint(meetup, url_prefix=next(g))
 
 @app.route('/')
 def index():

@@ -7,22 +7,24 @@
 </form>
 <h1>RatingsMap</h1>
 
-<div class="row">    
-    <form method="POST">
-        <h3>Review</h3>
-        <textarea name="review">
-{{ review }}
-        </textarea><br>
-
-        <input type="submit">
-    </form>
-
-    <div>    
+<div class="row">
+    <div>
         <img src="{{ poster }}">
     </div>
-    
-    {% for table in tables %}
-        {{ table|safe }}
-    {% endfor %}
+
+    <div style="float:right">        
+        {% for table in tables %}
+            {{ table|safe }}
+        {% endfor %}
+
+        <form method="POST">
+            <h3>Review</h3>
+            <textarea name="review">
+{{ review }}
+            </textarea><br>
+
+            <input type="submit">
+        </form>
+    </div>
 </div>
 
