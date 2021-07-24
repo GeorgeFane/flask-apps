@@ -1,2 +1,3 @@
 secrets.py
 datastore.json
+__pycache__/
